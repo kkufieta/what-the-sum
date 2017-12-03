@@ -17,7 +17,6 @@ export default {
   },
   computed: {
     getRounds: function () {
-      console.log(this.game)
       let num = this.game[6]
       let rounds = this.game[8]
       if (!num && !rounds) return
@@ -28,7 +27,7 @@ export default {
         str += a[i] + ' '
       }
       if (!a) return str
-      str = a + ' ';
+      str = a + ' '
       for (let i = a.length; i < round; i++) {
         str += 'X '
       }

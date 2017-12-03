@@ -32,8 +32,8 @@ export default {
     }
   },
   firebase: {
-    currentBids: db.ref(`/games/${'game1'}/current_bids`),
-    currentOffers: db.ref(`games/${'game1'}/current_offers`)
+    currentBids: db.ref(`/games/${'game1'}/current_bids/price`),
+    currentOffers: db.ref(`games/${'game1'}/current_offers/price`)
   },
   // PROPS FOR GAMENUMBER HERE
   methods: {
