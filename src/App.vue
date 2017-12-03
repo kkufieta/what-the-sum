@@ -3,7 +3,7 @@
     <i class="money material-icons">attach_money</i>
     <i class="money material-icons">attach_money</i>
     <i class="money material-icons">attach_money</i>
-    <router-view :db='db' :currentRound='currentRound' :currentBids='currentBids' />
+    <router-view/>
   </div>
 </template>
 

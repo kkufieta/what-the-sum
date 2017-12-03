@@ -24,9 +24,6 @@ export default {
     BidOffer,
     Visualizations,
     Values
-  },
-  data () {
-
   }
 }
 </script>
