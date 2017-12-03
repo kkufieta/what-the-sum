@@ -13,19 +13,19 @@ let db = firebase.database()
 let publicLedgerRef = db.ref(`/games/${'game1'}/public_ledger`)
 
 function ledgerToArray(obj) {
-  var returnArr = [];
+  var returnArr = []
   if (obj.length === 0) {
-    return returnArr;
+    return returnArr
   }
-  
+
   obj.forEach(function(childObj) {
     var x = childObj.time;
     var y = childObj.price;
-    
+
     returnArr.push([x, y]);
-  });
-  
-  console.log(returnArr);
+  })
+
+  // console.log(returnArr);
   return returnArr;
 };
 

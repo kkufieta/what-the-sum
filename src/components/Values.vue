@@ -17,21 +17,18 @@ export default {
   },
   computed: {
     getRounds: function () {
-      // let rounds = this.game[8]['.value']
-      // a = public number
-      // round = rounds
-      // TODO: Read in values`
-      let a = this.game[6]['.value']
+      let a = this.game[6]['.value'].toString()
       let round = this.game[8]['.value']
       let str = ''
+      console.log(round)
       for (let i = 0; i < round; i++) {
+        console.log('adding', a[i])
         str += a[i] + ' '
       }
       for (let i = round; i < a.length; i++) {
         str += 'X '
       }
-      console.log(str)
-      return str;
+      return str
     }
   }
 }
