@@ -1,8 +1,10 @@
 <template>
   <div id="buy-sell" class="row">
-    <div class="col s12">
-      <button @click.stop="sendBuy" >Buy</button>
-      <button @click.stop="sendSell">Sell</button>
+    <div class="col s12 button-div">
+      <button class="waves-effect waves-light btn" @click.stop="sendBuy">Buy</button>
+    </div>
+    <div class="col s12 button-div">
+      <button class="waves-effect waves-light btn" @click.stop="sendSell">Sell</button>
     </div>
   </div>
 </template>
@@ -27,8 +29,10 @@ export default {
 </script>
 
 <style scoped>
-button {
-  font-size: 25px;
-  padding: 10px 20px 10px 20px;
-}
+  #buy-sell {
+    padding-top: 90px;
+  }
+  .button-div {
+    padding: 15px 0;
+  }
 </style>
