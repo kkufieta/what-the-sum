@@ -28,7 +28,6 @@ function ledgerToArray(obj) {
   return returnArr;
 };
 
-
 export default {
   name: 'Plot',
   data () {
