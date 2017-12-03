@@ -1,29 +1,36 @@
 <template>
   <div class="hello row">
     <div class="col s12">
-      <h1>{{ getValues() }}</h1>
+      <h1>{{ getRounds }}</h1>
     </div>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
+const db = firebase.database()
+
 export default {
   name: 'Values',
-  data () {
-    return {}
+  firebase: {
+    game: db.ref(`/games/${'game1'}`)
   },
-  methods: {
-    getValues: function() {
-      // TODO: Read in values from firebase
-      let a = [1,2,3,4,5];
-      let round = 1;
-      let str = '';
+  computed: {
+    getRounds: function () {
+      // let rounds = this.game[8]['.value']
+      // a = public number
+      // round = rounds
+      // TODO: Read in values`
+      let a = this.game[6]['.value']
+      let round = this.game[8]['.value']
+      let str = ''
       for (let i = 0; i < round; i++) {
-        str += a[i] + ' ';
+        str += a[i] + ' '
       }
       for (let i = round; i < a.length; i++) {
-        str += 'X ';
+        str += 'X '
       }
+      console.log(str)
       return str;
     }
   }

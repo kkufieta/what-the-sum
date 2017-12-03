@@ -1,6 +1,7 @@
 <template>
   <div id="game">
     <div class="container">
+      {{ rounds }}
       <Values></Values>
       <Plot></Plot>
       <BidOffer></BidOffer>
@@ -25,9 +26,10 @@ export default {
     Plot,
     Values
   },
-  data () {
+  firebase: {
 
   }
+
 }
 </script>
 
