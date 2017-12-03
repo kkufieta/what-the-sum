@@ -4,10 +4,13 @@ import Vue from 'vue'
 import VueFire from 'vuefire'
 import App from './App'
 import router from './router'
+import Chartkick from 'chartkick'
+import VueChartkick from 'vue-chartkick'
 
 Vue.config.productionTip = false
 
 Vue.use(VueFire)
+Vue.use(VueChartkick, { Chartkick })
 
 /* eslint-disable no-new */
 new Vue({

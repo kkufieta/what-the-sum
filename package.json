@@ -13,9 +13,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "chartkick": "^2.2.4",
     "firebase": "^4.7.0",
     "firebaseui": "^2.5.1",
     "vue": "^2.5.2",
+    "vue-chartkick": "^0.2.0",
     "vue-router": "^3.0.1",
     "vuefire": "^1.4.4"
   },

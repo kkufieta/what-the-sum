@@ -2,6 +2,7 @@
   <div id="game">
     <div class="container">
       <Values></Values>
+      <Plot></Plot>
       <BidOffer></BidOffer>
     </div>
   </div>
@@ -10,11 +11,13 @@
 <script>
 import BidOffer from './BidOffer'
 import Values from './Values'
+import Plot from './Plot'
 
 export default {
   name: 'Game',
   components: {
     BidOffer,
+    Plot,
     Values
   }
 }
