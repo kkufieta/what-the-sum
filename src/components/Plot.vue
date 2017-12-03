@@ -25,7 +25,6 @@ function ledgerToArray(obj) {
     returnArr.push([x, y]);
   });
   
-  console.log(returnArr);
   return returnArr;
 };
 
@@ -42,7 +41,6 @@ export default {
   },
   computed: {
     getValues: function() {
-      console.log(this.ledger);
       return ledgerToArray(this.ledger)
     }
   }
