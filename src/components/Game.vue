@@ -1,16 +1,21 @@
 <template>
   <div id="game">
-    <BidOffer></BidOffer>
+    <div class="container">
+      <Values></Values>
+      <BidOffer></BidOffer>
+    </div>
   </div>
 </template>
 
 <script>
 import BidOffer from './BidOffer'
+import Values from './Values'
 
 export default {
   name: 'Game',
   components: {
-    BidOffer
+    BidOffer,
+    Values
   }
 }
 </script>
