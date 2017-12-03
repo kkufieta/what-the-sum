@@ -1,6 +1,8 @@
 <template>
-  <div class="hello">
-    <h1>{{ getValues() }}</h1>
+  <div class="hello row">
+    <div class="col s12">
+      <h1>{{ getValues() }}</h1>
+    </div>
   </div>
 </template>
 
@@ -12,6 +14,7 @@ export default {
   },
   methods: {
     getValues: function() {
+      // TODO: Read in values from firebase
       let a = [1,2,3,4,5];
       let round = 1;
       let str = '';

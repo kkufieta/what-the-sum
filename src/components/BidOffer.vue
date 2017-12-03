@@ -1,9 +1,17 @@
 <template>
-  <div id="bid-offer">
-    <input type="number" v-model="newBid.value" />
-    <button @click.stop="sendBid" >Bid at {{ newBid.value || 0 }}</button>
-    <input type="number" v-model="newOffer.value"/>
-    <button @click.stop="sendOffer">Offer at {{ newOffer.value || 0 }}</button>
+  <div id="bid-offer" class="row">
+    <div class="col s3">
+      <input type="number" v-model="newBid.value" />
+    </div>
+    <div class="col s3">
+      <button @click.stop="sendBid" >Bid at {{ newBid.value || 0 }}</button>
+    </div>
+    <div class="col s3">
+      <input type="number" v-model="newOffer.value"/>
+    </div>
+    <div class="col s3">
+      <button @click.stop="sendOffer">Offer at {{ newOffer.value || 0 }}</button>
+    </div>
   </div>
 </template>
 

@@ -14,11 +14,6 @@ export default new Router({
       component: Login
     },
     {
-      path: '/Values',
-      name: 'Values',
-      component: Values
-    },
-    {
       path: '/game',
       name: 'Game',
       component: Game
