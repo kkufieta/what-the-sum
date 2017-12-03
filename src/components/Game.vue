@@ -1,6 +1,7 @@
 <template>
   <div id="game">
     <div class="container">
+      {{ rounds }}
       <Values></Values>
       <Visualizations></Visualizations>
       <BidOffer></BidOffer>
@@ -25,6 +26,7 @@ export default {
     Visualizations,
     Values
   }
+
 }
 </script>
 
