@@ -3,7 +3,7 @@
     <div class="container">
       {{ rounds }}
       <Values></Values>
-      <Plot></Plot>
+      <Visualizations></Visualizations>
       <BidOffer></BidOffer>
     </div>
   </div>
@@ -12,7 +12,7 @@
 <script>
 import BidOffer from './BidOffer'
 import Values from './Values'
-import Plot from './Plot'
+import Visualizations from './Visualizations'
 
 // const currentRound = db.ref(`games/${'game1'}/current_round`)
 //
@@ -23,11 +23,8 @@ export default {
   name: 'Game',
   components: {
     BidOffer,
-    Plot,
+    Visualizations,
     Values
-  },
-  firebase: {
-
   }
 
 }

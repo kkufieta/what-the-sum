@@ -1,24 +1,49 @@
 <template>
   <div class="hello row">
     <div class="col s12">
-      <line-chart :data="values"></line-chart>
+      <line-chart :data="getValues"></line-chart>
     </div>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
+let db = firebase.database()
+
+let publicLedgerRef = db.ref(`/games/${'game1'}/public_ledger`)
+
+function ledgerToArray(obj) {
+  var returnArr = [];
+  if (obj.length === 0) {
+    return returnArr;
+  }
+  
+  obj.forEach(function(childObj) {
+    var x = childObj.time;
+    var y = childObj.price;
+    
+    returnArr.push([x, y]);
+  });
+  
+  console.log(returnArr);
+  return returnArr;
+};
+
+
 export default {
-  name: 'Values',
+  name: 'Plot',
   data () {
     return {
       values: [[1,1], [2,4], [3,9], [4,16]]
     }
   },
-  methods: {
+  firebase: {
+    ledger: publicLedgerRef
+  },
+  computed: {
     getValues: function() {
-      // TODO: Read in values from firebase
-      let a = [[1,1], [2,4], [3,9], [4,16]];
-      return a;
+      console.log(this.ledger);
+      return ledgerToArray(this.ledger)
     }
   }
 }

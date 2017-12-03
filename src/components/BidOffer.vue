@@ -1,16 +1,16 @@
 <template>
   <div id="bid-offer" class="row">
-    <div class="col s3">
+    <div class="col s2">
       <input type="number" v-model="newBid.value" />
     </div>
-    <div class="col s3">
-      <button @click.stop="sendBid" >Bid at {{ newBid.value || 0 }}</button>
+    <div class="col s4">
+      <button class="waves-effect waves-light btn" @click.stop="sendBid" >Bid at {{ newBid.value || 0 }}</button>
     </div>
-    <div class="col s3">
+    <div class="col s2">
       <input type="number" v-model="newOffer.value"/>
     </div>
-    <div class="col s3">
-      <button @click.stop="sendOffer">Offer at {{ newOffer.value || 0 }}</button>
+    <div class="col s4">
+      <button class="waves-effect waves-light btn" @click.stop="sendOffer">Offer at {{ newOffer.value || 0 }}</button>
     </div>
   </div>
 </template>
@@ -70,8 +70,4 @@ export default {
 </script>
 
 <style scoped>
-button {
-  font-size: 25px;
-  padding: 10px 20px 10px 20px;
-}
 </style>
