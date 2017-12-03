@@ -28,9 +28,12 @@ export default {
       }
     }
   },
+  // PROPS FOR GAMENUMBER HERE
   methods: {
     sendBid (e) {
       console.log('i sent', this.newBid.value)
+      const bidPrice = this.newBid.value
+      this.$firebaseRefs.currentBids.push({ bidPrice: 'userOne' })
       // TODO: firebase post bid
     },
     sendOffer (e) {
@@ -41,6 +44,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+button {
+  font-size: 25px;
+  padding: 10px 20px 10px 20px;
+}
 </style>

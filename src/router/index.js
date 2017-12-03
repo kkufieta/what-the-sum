@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Values from '@/components/Values'
 import Game from '@/components/Game'
 import Login from '@/components/Login'
 
@@ -16,7 +15,8 @@ export default new Router({
     {
       path: '/game',
       name: 'Game',
-      component: Game
+      component: Game,
+      props: true
     }
   ]
 })

@@ -5,7 +5,7 @@ import VueFire from 'vuefire'
 import App from './App'
 import router from './router'
 import firebase from 'firebase'
-import firebaseui from 'firebaseui';
+// import firebaseui from 'firebaseui';
 import { config } from './helpers/firebaseConfig'
 
 Vue.config.productionTip = false
@@ -17,7 +17,6 @@ new Vue({
   el: '#app',
   router,
   created () {
-    const app = firebase.initializeApp(config)
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.$router.push('/game')
@@ -25,8 +24,6 @@ new Vue({
         this.$router.push('/')
       }
     })
-    let db = app.database()
-    // ADD DB REFS HERE
   },
   template: '<App/>',
   components: { App }

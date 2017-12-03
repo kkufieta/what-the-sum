@@ -1,6 +1,7 @@
 <template>
   <div id="game">
     <div class="container">
+      {{ db.ref('games') }}
       <Values></Values>
       <BidOffer></BidOffer>
     </div>
@@ -16,7 +17,15 @@ export default {
   components: {
     BidOffer,
     Values
-  }
+  },
+  // firebase: {
+  //   currentRound: db.ref(`games/${'game1'}/current_round`),
+  //   currentOffers: db.ref(`games/${'game1'}/current_offers`),
+  //   currentBids: db.ref(`games/${'game1'}/current_bids`),
+  //   rounds: db.ref(`games/${'game1'}/current_offers`),
+  //   publicNumber: db.ref(`games/${'game1'}/public_number`)
+  // },
+  props: ['db']
 }
 </script>
 
