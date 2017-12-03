@@ -3,7 +3,7 @@
     <div class="container">
       {{ db.ref('games') }}
       <Values></Values>
-      <Plot></Plot>
+      <Visualizations></Visualizations>
       <BidOffer></BidOffer>
     </div>
   </div>
@@ -12,13 +12,13 @@
 <script>
 import BidOffer from './BidOffer'
 import Values from './Values'
-import Plot from './Plot'
+import Visualizations from './Visualizations'
 
 export default {
   name: 'Game',
   components: {
     BidOffer,
-    Plot,
+    Visualizations,
     Values
   },
   // firebase: {
