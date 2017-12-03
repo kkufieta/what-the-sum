@@ -21,12 +21,12 @@ export default {
     }
   },
   methods: {
-    sendBid: (e) => {
-      console.log('i sent', this.newBid)
+    sendBid (e) {
+      console.log('i sent', this.newBid.value)
       // TODO: firebase post bid
     },
-    sendOffer: (e) => {
-      console.log('i sent ', this.newOffer)
+    sendOffer (e) {
+      console.log('i sent', this.newOffer.value)
       // TODO: firebase post offer
     }
   }
