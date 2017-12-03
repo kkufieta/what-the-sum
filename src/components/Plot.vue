@@ -7,11 +7,24 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+let db = firebase.database()
+
+let publicLedgerRef = db.ref(`/games/${'game1'}/public_ledger`)
+
 export default {
   name: 'Values',
   data () {
     return {
       values: [[1,1], [2,4], [3,9], [4,16]]
+    }
+  },
+  firebase: {
+    ledger: publicLedgerRef
+  },
+  computed: {
+    getValues: function() {
+      console.log(this.ledger);
     }
   },
   methods: {
