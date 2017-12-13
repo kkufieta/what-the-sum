@@ -6,6 +6,7 @@
     <div class="col s12 button-div">
       <button class="waves-effect waves-light btn" @click.stop="sendSell">Sell</button>
     </div>
+    <!-- USER's OWN bid and offer in yellow or green -->
   </div>
 </template>
 

@@ -5,14 +5,14 @@
 <script>
 import firebase from 'firebase';
 import firebaseui from 'firebaseui'
-import { config } from '../helpers/firebaseConfig';
+import { config } from '../helpers/firebaseConfig'
 
 // TODO: AUTH HERE
 export default {
   name: 'Login',
   mounted () {
     var uiConfig = {
-      signInSuccessUrl: 'index.html',
+      signInSuccessUrl: '/game',
       signInOptions: [
         // Specify providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,

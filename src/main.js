@@ -8,7 +8,6 @@ import Chartkick from 'chartkick'
 import VueChartkick from 'vue-chartkick'
 import firebase from 'firebase'
 // import firebaseui from 'firebaseui';
-import { config } from './helpers/firebaseConfig'
 
 Vue.config.productionTip = false
 

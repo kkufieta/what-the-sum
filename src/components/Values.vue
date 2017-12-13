@@ -13,15 +13,15 @@ const db = firebase.database()
 export default {
   name: 'Values',
   firebase: {
-    game: db.ref(`/games/${'game1'}`)
+    game: {
+      source: db.ref(`/games/${'game1'}`),
+      asObject: true
+    }
   },
   computed: {
     getRounds: function () {
-      let num = this.game[6]
-      let rounds = this.game[8]
-      if (!num && !rounds) return
-      let a = num['.value'].toString()
-      let round = rounds['.value']
+      let a = this.game.public_number && this.game.public_number.toString()
+      let round = this.game.current_round
       let str = ''
       for (let i = 0; i < round; i++) {
         str += a[i] + ' '

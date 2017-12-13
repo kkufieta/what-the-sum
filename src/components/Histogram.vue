@@ -10,7 +10,6 @@
 import firebase from 'firebase'
 let db = firebase.database()
 
-let gameRef = db.ref(`/games/${'game1'}`)
 export default {
   name: 'Values',
   data () {
@@ -19,38 +18,25 @@ export default {
     }
   },
   firebase: {
-    game: gameRef
+    currentBids: db.ref('games/game1/current_bids'),
+    currentOffers: db.ref('games/game1/current_offers')
   },
   computed: {
-    getBidsAndOffers: function() {
-      let bids = []
-      let offers = []
-      if (this.game.length > 1 && this.game[0].hasOwnProperty('price')) {
-        console.log(this.game[0].price);
-        let obj = this.game[0].price;
-        for (let item in obj) {
-          console.log(item)
-          console.log(obj[item].length)
-          item = parseInt(item, 10)
-          bids.push([item, obj[item].length])
-        }
-      }
-      if (this.game.length > 1 && this.game[1].hasOwnProperty('price')) {
-        console.log(this.game[1].price);
-        let obj = this.game[1].price;
-        for (let item in obj) {
-          console.log(item)
-          console.log(obj[item].length)
-          item = parseInt(item, 10)
-          offers.push([item, obj[item].length])
-        }
-      }
-
-      let data = [
+    getBidsAndOffers: function () {
+      const bids = this.currentBids.map(bids => {
+        // Subtract one to avoid including key in count
+        const bidQuantity = Object.keys(bids).length - 1
+        return [bids['.key'], bidQuantity]
+      })
+      const offers = this.currentOffers.map(offers => {
+        // Subtract one to avoid including key in count
+        const offerQuantity = Object.keys(offers).length - 1
+        return [offers['.key'], offerQuantity]
+      })
+      return [
         {name: 'Number of Bids at this value', data: bids},
         {name: 'Number of Offers at this value', data: offers}
       ]
-      return data;
     }
   }
 }

@@ -21,7 +21,6 @@ export default {
     Visualizations,
     Values
   }
-
 }
 </script>
 

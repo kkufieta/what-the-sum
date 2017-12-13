@@ -28,42 +28,37 @@ export default {
       },
       newOffer: {
         value: 20
-      }
+      },
+      photo: '',
+      userId: '',
+      name: '',
+      email: '',
+      user: {}
     }
   },
   firebase: {
-    currentBids: db.ref(`/games/${'game1'}/current_bids/price`),
-    currentOffers: db.ref(`games/${'game1'}/current_offers/price`)
+    game: db.ref('games/game1'),
+    users: db.ref('games/game1/users')
   },
-  // PROPS FOR GAMENUMBER HERE
+  created () {
+    this.user = firebase.auth().currentUser
+    if (this.user) {
+      this.name = this.user.displayName
+      this.email = this.user.email
+      this.photo = this.user.photoURL
+      this.userId = this.user.uid
+    }
+  },
   methods: {
     sendBid (e) {
       const bidPrice = this.newBid.value
-      this.$firebaseRefs.currentBids.child(bidPrice).once('value', (snapshot) => {
-        let bids = snapshot.val()
-        if (bids) {
-          bids = bids.concat(['user1'])
-        } else {
-          bids = ['user1']
-        }
-        this.$firebaseRefs.currentBids.child(bidPrice).set(bids)
-      })
-      // TODO: firebase post bid
+      this.$firebaseRefs.game.child('current_bids').child(bidPrice).child(this.userId).set(new Date().getTime())
+      this.$firebaseRefs.users.child(this.userId).child('active_bid').set(bidPrice)
     },
     sendOffer (e) {
       const offerPrice = this.newOffer.value
-      this.$firebaseRefs.currentOffers.child(offerPrice).once('value', (snapshot) => {
-        let offers = snapshot.val()
-        if (offers) {
-          offers = offers.concat(['user1'])
-        } else {
-          offers = ['user1']
-        }
-        this.$firebaseRefs.currentOffers.child(offerPrice).set(offers)
-      })
-
-      console.log('i sent', this.newOffer.value)
-      // TODO: firebase post offer
+      this.$firebaseRefs.game.child('current_offers').child(offerPrice).child(this.userId).set(new Date().getTime())
+      this.$firebaseRefs.users.child(this.userId).child('active_offer').set(offerPrice)
     }
   }
 }
