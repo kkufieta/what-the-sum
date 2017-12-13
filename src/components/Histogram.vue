@@ -1,7 +1,7 @@
 <template>
   <div class="hello row">
     <div class="col s12">
-      <bar-chart :data="getBidsAndOffers" :stacked="true" :legend="true"></bar-chart>
+      <bar-chart :data="getBidsAndOffers" :colors="['#c533cc', '#3365cc']" legend="bottom" xtitle="Number of Bids/Offers" ytitle="Values of Bids/Offers" :stacked="true"></bar-chart>
     </div>
   </div>
 </template>
@@ -34,8 +34,8 @@ export default {
         return [offers['.key'], offerQuantity]
       })
       return [
-        {name: 'Number of Bids at this value', data: bids},
-        {name: 'Number of Offers at this value', data: offers}
+        {name: 'Bids', data: bids},
+        {name: 'Offers', data: offers}
       ]
     }
   }
