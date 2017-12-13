@@ -1,7 +1,7 @@
 <template>
   <div class="hello row">
     <div class="col s12">
-      <line-chart :data="getValues"></line-chart>
+      <line-chart :curve="false" xtitle="Time" ytitle="Value" :data="getValues"></line-chart>
     </div>
   </div>
 </template>
