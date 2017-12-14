@@ -14,24 +14,27 @@ export default {
   name: 'Values',
   firebase: {
     game: {
-      source: db.ref(`/games/${'game1'}`),
+      source: db.ref(`/games/game1`),
+      asObject: true
+    },
+    rounds: {
+      source: db.ref('/games/game1/rounds'),
       asObject: true
     }
   },
   computed: {
     getRounds: function () {
       if (!this.game.public_number) return
-      let a = this.game.public_number && this.game.public_number.toString()
+      let publicNum = this.game.public_number && this.game.public_number.toString()
       let round = this.game.current_round
       let str = ''
       for (let i = 0; i < round; i++) {
-        str += a[i] + ' '
+        str += publicNum[i] + ' '
       }
-      if (!a) return str
-      str = a + ' '
-      for (let i = a.length; i < round; i++) {
+      for (let i = round; i < this.rounds['.value']; i++) {
         str += 'X '
       }
+      console.log(str)
       return str
     }
   }

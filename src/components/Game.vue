@@ -3,7 +3,7 @@
     <div class="container">
       {{ rounds }}
       <div v-if="ranking" class="col s6">
-        <table>
+        <table class="centered">
           <thead>
             <tr>
               <th>Your Score</th>
