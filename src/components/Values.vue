@@ -20,6 +20,7 @@ export default {
   },
   computed: {
     getRounds: function () {
+      if (!this.game.public_number) return
       let a = this.game.public_number && this.game.public_number.toString()
       let round = this.game.current_round
       let str = ''

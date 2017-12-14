@@ -24,7 +24,10 @@ export default {
   },
   firebase: {
     currentBids: db.ref('games/game1/current_bids'),
-    currentOffers: db.ref('games/game1/current_offers')
+    currentOffers: db.ref('games/game1/current_offers'),
+    users: db.ref('games/game1/users'),
+    trade_history: db.ref('games/game1/trade_history'),
+    public_ledger: db.ref('games/game1/public_ledger')
   },
   created () {
     this.user = firebase.auth().currentUser
@@ -40,19 +43,38 @@ export default {
       const [best] = ref.filter(el => el['.key'] === val.toString())
       const otherUser = Object.keys(best).filter(key => key !== '.key')
         .filter(userId => userId !== this.userId)
-      if (!otherUser.length) return// ERROR HANDLE HERE
+      if (!otherUser.length) return // ERROR HANDLE HERE
       return otherUser[0]
     },
     sendBuy (e) {
       const lowestOffer = this.getMin(this.currentOffers.map(offer => offer['.key']))
       const offerer = this.firstSellerNotMe(this.currentOffers, lowestOffer)
+      if (!offerer) return
       this.$firebaseRefs.currentOffers.child(lowestOffer).child(offerer).set(null)
-      // PROCESS TRANSACTIONS HERE
+      const trade = {
+        buy_sell: 'buy',
+        price: lowestOffer,
+        time: new Date().toLocaleTimeString()
+      }
+      this.$firebaseRefs.users.child(this.userId).child('trade_history').push(trade)
+      this.$firebaseRefs.trade_history.push({ seller: offerer, buyer: this.userId, price: lowestOffer, time: new Date().toLocaleTimeString() })
+      this.$firebaseRefs.public_ledger.push({ price: lowestOffer, time: new Date().toLocaleTimeString() })
+      this.$firebaseRefs.users.child(offerer).child('active_offer').set(null)
     },
     sendSell (e) {
       const lowestBid = this.getMin(this.currentBids.map(bid => bid['.key']))
       const bidder = this.firstSellerNotMe(this.currentBids, lowestBid)
+      if (!bidder) return
       this.$firebaseRefs.currentBids.child(lowestBid).child(bidder).set(null)
+      const trade = {
+        buy_sell: 'sell',
+        price: lowestBid,
+        time: new Date().toLocaleTimeString()
+      }
+      this.$firebaseRefs.users.child(this.userId).child('trade_history').push(trade)
+      this.$firebaseRefs.trade_history.push({ seller: this.userId, buyer: bidder, price: lowestBid, time: new Date().toLocaleTimeString() })
+      this.$firebaseRefs.public_ledger.push({ price: lowestBid, time: new Date().toLocaleTimeString() })
+      this.$firebaseRefs.users.child(bidder).child('active_bid').set(null)
     }
   },
   computed: {
