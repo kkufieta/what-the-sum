@@ -24,14 +24,13 @@ export default {
   },
   computed: {
     getRounds: function () {
-      if (!this.game.public_number) return
-      let publicNum = this.game.public_number && this.game.public_number.toString()
+      let publicNum = this.game.number && this.game.number.toString()
       let round = this.game.current_round
       let str = ''
-      for (let i = 0; i < round; i++) {
+      for (let i = 0; i < round - 1; i++) {
         str += publicNum[i] + ' '
       }
-      for (let i = round; i < this.rounds['.value']; i++) {
+      for (let i = round - 1; i < this.rounds['.value']; i++) {
         str += 'X '
       }
       console.log(str)
