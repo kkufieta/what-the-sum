@@ -21,9 +21,9 @@ new Vue({
   created () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.$router.push('/game')
+        this.$router.replace('/game')
       } else {
-        this.$router.push('/')
+        this.$router.replace('/')
       }
     })
   },

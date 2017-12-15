@@ -12,7 +12,7 @@ export default {
   name: 'Login',
   mounted () {
     var uiConfig = {
-      signInSuccessUrl: '/game',
+      // signInSuccessUrl: '',
       signInOptions: [
         // Specify providers you want to offer your users.
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
