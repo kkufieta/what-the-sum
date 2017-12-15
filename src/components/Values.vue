@@ -28,6 +28,7 @@ export default {
   },
   computed: {
     getRounds: function () {
+      if (!this.game || !this.status) return
       if (this.status['.value'] !== 'playing') return this.game.number.toString().split('').join(' ')
       let publicNum = this.game.number && this.game.number.toString()
       let round = this.game.current_round
